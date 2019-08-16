@@ -56,14 +56,38 @@ namespace HomeschoolCoopManager.Services
             return await _context.Users.FindAsync(id);
         }
 
-        public Task Delete(int id)
+        public async Task Delete(Guid id)
         {
-            throw new System.NotImplementedException();
+            var user = await _context.Users.FindAsync(id);
+            if (user != null)
+            {
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
+            }
         }
 
-        public Task Update(User user, string password = null)
+        public async Task Update(User userParam, string password = null)
         {
-            throw new System.NotImplementedException();
+            var user = await _context.Users.FindAsync(userParam.Id);
+
+            if (user == null)
+                throw new Exception("User not found");
+
+            if (userParam.Email != user.Email)
+            {
+                // username has changed so check if the new username is already taken
+                if (await _context.Users.ToAsyncEnumerable().Any(x => x.Email == userParam.Email))
+                    throw new Exception("Email " + userParam.Email + " is already in use");
+            }
+
+            // update password if it was entered
+            if (!string.IsNullOrWhiteSpace(password))
+            {
+                user.PasswordHash = _securityService.HashPassword(password);
+            }
+
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
         }
     }
 }

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using HomeschoolCoopManager.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using HomeschoolCoopManager.Models;
+using System.Diagnostics;
 
 namespace HomeschoolCoopManager.Controllers
 {
