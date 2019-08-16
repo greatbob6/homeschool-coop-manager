@@ -1,4 +1,5 @@
 ﻿using HomeschoolCoopManager.Data;
+using HomeschoolCoopManager.Exceptions;
 using HomeschoolCoopManager.Interfaces.Services;
 using HomeschoolCoopManager.Models;
 using System;
@@ -38,10 +39,10 @@ namespace HomeschoolCoopManager.Services
         {
 
             if (string.IsNullOrWhiteSpace(password))
-                throw new Exception("Password is required");
+                throw new AppException("Password is required");
 
             if (await _context.Users.ToAsyncEnumerable().Any(x => x.Email == user.Email))
-                throw new Exception("Email \"" + user.Email + "\" has already been registered");
+                throw new AppException($"Email \"{user.Email}\" has already been registered");
 
             user.PasswordHash = _securityService.HashPassword(password);
 
@@ -71,13 +72,13 @@ namespace HomeschoolCoopManager.Services
             var user = await _context.Users.FindAsync(userParam.Id);
 
             if (user == null)
-                throw new Exception("User not found");
+                throw new AppException("User not found");
 
             if (userParam.Email != user.Email)
             {
                 // username has changed so check if the new username is already taken
                 if (await _context.Users.ToAsyncEnumerable().Any(x => x.Email == userParam.Email))
-                    throw new Exception("Email " + userParam.Email + " is already in use");
+                    throw new AppException($"Email \"{userParam.Email}\" is already in use");
             }
 
             // update password if it was entered

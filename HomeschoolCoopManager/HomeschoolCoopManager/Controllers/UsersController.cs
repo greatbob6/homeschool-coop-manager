@@ -1,7 +1,9 @@
-﻿using HomeschoolCoopManager.Interfaces.Services;
+﻿using HomeschoolCoopManager.Exceptions;
+using HomeschoolCoopManager.Interfaces.Services;
 using HomeschoolCoopManager.Models.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace HomeschoolCoopManager.Controllers
@@ -37,6 +39,62 @@ namespace HomeschoolCoopManager.Controllers
                 Email = user.Email,
                 Token = tokenString
             });
+        }
+
+        [AllowAnonymous]
+        [HttpPost("register")]
+        public IActionResult Register([FromBody]UserDto userDto)
+        {
+            // map dto to entity
+            var user = Models.User.FromDto(userDto);
+
+            try
+            {
+                _userService.Create(user, userDto.Password);
+
+                return Ok();
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var user = await _userService.GetById(id);
+
+            var userDto = user.ToDto();
+
+            return Ok(userDto);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(Guid id, [FromBody]UserDto userDto)
+        {
+            // map dto to entity and set id
+            var user = Models.User.FromDto(userDto);
+            user.Id = id;
+
+            try
+            {
+                await _userService.Update(user, userDto.Password);
+
+                return Ok();
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            await _userService.Delete(id);
+
+            return Ok();
         }
     }
 }
