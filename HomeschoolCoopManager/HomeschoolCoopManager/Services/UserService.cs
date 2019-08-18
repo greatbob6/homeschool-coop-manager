@@ -44,6 +44,7 @@ namespace HomeschoolCoopManager.Services
             if (await _context.Users.ToAsyncEnumerable().Any(x => x.Email == user.Email))
                 throw new AppException($"Email \"{user.Email}\" has already been registered");
 
+            user.Id = Guid.NewGuid();
             user.PasswordHash = _securityService.HashPassword(password);
 
             await _context.Users.AddAsync(user);

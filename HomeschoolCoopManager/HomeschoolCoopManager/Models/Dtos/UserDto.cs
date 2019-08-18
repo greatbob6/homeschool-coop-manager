@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace HomeschoolCoopManager.Models.Dtos
 {

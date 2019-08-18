@@ -1,5 +1,6 @@
 ﻿using HomeschoolCoopManager.Interfaces.Services;
 using HomeschoolCoopManager.Models;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
@@ -13,9 +14,9 @@ namespace HomeschoolCoopManager.Services
         private readonly int _workFactor = 13;
         private readonly AppSettings _appSettings;
 
-        public SecurityService(AppSettings appSettings)
+        public SecurityService(IOptions<AppSettings> appSettings)
         {
-            _appSettings = appSettings;
+            _appSettings = appSettings.Value;
         }
 
         private SecurityToken CreateTokenInternal(User user, JwtSecurityTokenHandler tokenHandler)

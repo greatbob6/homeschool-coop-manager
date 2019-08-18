@@ -45,7 +45,8 @@ namespace HomeschoolCoopManager.Controllers
         [HttpPost("register")]
         public IActionResult Register([FromBody]UserDto userDto)
         {
-            // map dto to entity
+            userDto.Id = Guid.Empty;
+
             var user = Models.User.FromDto(userDto);
 
             try
