@@ -1,0 +1,42 @@
+.PageHeader {
+  background-color: green;
+
+  display: flex;
+}
+
+.PageHeader h1 {
+  flex: 9;
+
+  font-size: 1.5rem;
+}
+
+.PageHeader .userProfile {
+  flex: 1;
+  justify-self: end;
+  
+  width: 100%;
+  text-align: right;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.PageHeader .userProfile .avatar {
+  width: 100%;
+  height: 100%;
+
+  max-width: 50px;
+  max-height: 50px;
+
+  border-radius: 50%;
+
+  background-color: blue;
+  color: white;
+  text-align: center;
+  font-size: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
