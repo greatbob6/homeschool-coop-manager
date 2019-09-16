@@ -6,15 +6,15 @@ import PageHeader from './components/PageHeader/PageHeader';
 
 const App: React.FC = () => {
   return (
-    <div>
+    <>
       <PageHeader />
-      <div>
+      <div className="pageBody">
         <NavBar />
         <div className="pageContent">
           Page content goes here.
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
