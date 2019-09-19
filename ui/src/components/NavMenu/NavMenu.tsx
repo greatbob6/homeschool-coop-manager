@@ -1,5 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import './NavMenu.css';
+
 import { NavMenu as NavMenuModel } from '../../model/NavMenu';
 
 interface NavMenuProps {
@@ -12,7 +15,7 @@ const NavMenu: React.FC<NavMenuProps> = (props: NavMenuProps) => {
 
   if (navMenu.children && navMenu.children.length > 0) {
     children = <ul className="navLinks">
-        {navMenu.children.map(child => <li><a href={child.link}>{child.title}</a></li>)}
+        {navMenu.children.map(child => <li><Link to={child.link}>{child.title}</Link></li>)}
       </ul>
   }
   else {
@@ -21,7 +24,7 @@ const NavMenu: React.FC<NavMenuProps> = (props: NavMenuProps) => {
 
   return (
     <div className="navMenu">
-      <h2><a href={navMenu.link}>{navMenu.title}</a></h2>
+      <h2><Link to={navMenu.link}>{navMenu.title}</Link></h2>
       {children}
     </div>
   );

@@ -4,10 +4,10 @@ import './PageHeader.css';
 const PageHeader: React.FC = () => {
   return (
     <div className="PageHeader">
-      <h1>North Spokane Homeschool Coop</h1>
+      <h1>Homeschool Coop Manager</h1>
 
       <div className="userProfile">
-        <div className="avatar">UP</div>
+        <div className="avatar">ME</div>
       </div>
     </div>
   );
