@@ -1,0 +1,13 @@
+.DaySchedule {
+  margin: 20px;
+  padding: 5px 20px;
+  background-color: green;
+}
+
+.DaySchedule .Period {
+  background-color: lightskyblue;
+}
+
+.DaySchedule .Period.other-time {
+  background-color: lightgray;
+}
