@@ -4,38 +4,24 @@ import './ClassSchedule.css';
 import DaySchedule from '../DaySchedule/DaySchedule';
 
 import { WeekSchedule } from '../../model/Schedule';
+import { Class } from '../../model/Class';
 
-const ClassSchedule: React.FC = () => {
-  const data : WeekSchedule = {
-    days: [
-      {
-        dayName: 'Wednesday',
-        periods: [
-          { start: '09:00 AM', end: '10:00 AM', isClassTime: true, description: '' },
-          { start: '10:00 AM', end: '11:00 AM', isClassTime: true, description: '' },
-          { start: '11:00 AM', end: '12:00 PM', isClassTime: true, description: '' },
-          { start: '12:00 PM', end: '01:00 PM', isClassTime: false, description: 'Lunch Break' },
-          { start: '01:00 PM', end: '02:00 PM', isClassTime: true, description: '' }
-        ]
-      },
-      {
-        dayName: 'Thursday',
-        periods: [
-          { start: '09:00 AM', end: '10:00 AM', isClassTime: true, description: '' },
-          { start: '10:00 AM', end: '11:00 AM', isClassTime: true, description: '' },
-          { start: '11:00 AM', end: '12:00 PM', isClassTime: true, description: '' },
-          { start: '12:00 PM', end: '01:00 PM', isClassTime: false, description: 'Lunch Break' },
-          { start: '01:00 PM', end: '02:00 PM', isClassTime: true, description: '' }
-        ]
-      }
-    ]
-  };
+interface ClassScheduleProps {
+  schedule: WeekSchedule;
+  classes: Class[];
+}
 
+const ClassSchedule: React.FC<ClassScheduleProps> = (props) => {
   return (
     <div className="ClassSchedule">
-      {data.days.map(day =>
-        <DaySchedule key={day.dayName} day={day} />
-      )}
+      {props.schedule.days.map(day => {
+        const dayPeriodIds = day.periods.map(p => p.id);
+        const dayClasses = props.classes.filter(c => c.period_ids.some(p => dayPeriodIds.includes(p)));
+
+        return (
+          <DaySchedule key={day.dayName} day={day} classes={dayClasses} />
+        );
+      })}
     </div>
   );
 }
