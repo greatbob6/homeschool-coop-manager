@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './DaySchedule.css';
 
 import ClassListElement from '../ClassListElement/ClassListElement';

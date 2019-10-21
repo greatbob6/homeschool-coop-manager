@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './ClassListElement.css';
+
 import { Class } from '../../model/Class';
 
 interface ClassListElementProps {

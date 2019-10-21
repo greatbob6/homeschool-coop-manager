@@ -1,0 +1,12 @@
+.ClassListElement {
+  padding: 5px 10px;
+  background-color: beige;
+}
+
+.ClassListElement h4 {
+  margin: 0;
+}
+
+.ClassListElement p {
+  margin: 5px 0;
+}

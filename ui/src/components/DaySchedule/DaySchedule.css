@@ -1,13 +1,26 @@
 .DaySchedule {
   margin: 20px;
-  padding: 5px 20px;
+  padding: 5px 10px 10px 10px;
   background-color: green;
+}
+
+.DaySchedule h2 {
+  margin: 0 0 5px 0;
 }
 
 .DaySchedule .Period {
   background-color: lightskyblue;
+  padding: 5px;
 }
 
 .DaySchedule .Period.other-time {
-  background-color: lightgray;
+  background-color: gray;
+}
+
+.DaySchedule .Period h3 {
+  margin: 0;
+}
+
+.DaySchedule .Period .Classes {
+  margin-top: 10px;
 }
