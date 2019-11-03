@@ -8,6 +8,7 @@ import PageHeader from './components/PageHeader/PageHeader';
 
 import Index from './page-components/Index/Index';
 import Classes from './page-components/Classes/Classes';
+import Families from './page-components/Families/Families';
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const App: React.FC = () => {
         <div className="pageContent">
             <Route path="/" exact component={Index} />
             <Route path="/classes" component={Classes} />
+            <Route path="/families" component={Families} />
         </div>
       </div>
     </Router>

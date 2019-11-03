@@ -5,3 +5,7 @@
   flex-direction: row;
   flex: auto;
 }
+
+.pageBody .pageContent {
+  flex: auto;
+}

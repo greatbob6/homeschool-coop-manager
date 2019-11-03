@@ -7,7 +7,8 @@ import NavMenu from '../NavMenu/NavMenu';
 const NavBar: React.FC = () => {
   const navMenu : NavMenuModel[] = [
     { title: 'Index', link: '/', children: [] },
-    { title: 'Classes', link: '/classes', children: [] }
+    { title: 'Classes', link: '/classes', children: [] },
+    { title: 'Families', link: '/families', children: [] }
   ];
 
   return (
