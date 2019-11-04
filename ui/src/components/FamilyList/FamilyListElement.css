@@ -4,8 +4,8 @@
   background-color: beige;
 }
 
-.FamilyListElement h4 {
-  margin: 0;
+.FamilyListElement .ParentLast {
+  font-weight: bold;
 }
 
 .FamilyListElement p {

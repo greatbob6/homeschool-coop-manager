@@ -1,5 +1,7 @@
 import { Address } from "./Address";
 import { Contact } from "./Contact";
+import { Student } from "./Student";
+import { Parent } from "./Parent";
 
 export interface Family {
   id: string;
@@ -9,4 +11,7 @@ export interface Family {
   emergency_contact: Contact;
   membership_status: string;
   notes: string;
+
+  parents: Parent[];
+  kids: Student[];
 }
