@@ -1,3 +1,8 @@
 .FamilyList {
   padding: 5px 10px 10px 10px;
 }
+
+.FamilyList .AddFamily {
+  font-size: 2rem;
+  text-decoration: none;
+}
